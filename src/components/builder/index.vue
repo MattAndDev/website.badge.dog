@@ -22,7 +22,7 @@
     </div>
     <div class="" v-html="result">
     </div>
-    <button v-if="template" type="button" name="button" @click="getTemplate">get</button>
+    <button v-if="template" type="button" name="button" @click="getBadge">get</button>
   </div>
 </template>
 <script src="./builder.js"></script>

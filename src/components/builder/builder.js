@@ -53,10 +53,14 @@ export default {
     getTemplate: async function (template) {
       this.template = template.value
       this.isLoading = true
-      this.result = ''
-      var queryString = Object.keys(this.templateOptions).map(key => key + '=' + encodeURIComponent(this.templateOptions[key])).join('&')
       let opts = await fetch(`https://api.badge.dog/opts/${this.template}`)
       this.templateOptions = await opts.json()
+      this.isLoading = false
+    },
+    getBadge: async function () {
+      this.isLoading = true
+      this.result = ''
+      var queryString = Object.keys(this.templateOptions).map(key => key + '=' + encodeURIComponent(this.templateOptions[key])).join('&')
       let result = await fetch(`https://api.badge.dog/woof/${this.template}.svg?${queryString}`)
       result = await result.text()
       this.isLoading = false
