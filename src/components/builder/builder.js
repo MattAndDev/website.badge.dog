@@ -55,9 +55,9 @@ export default {
       this.isLoading = true
       this.result = ''
       var queryString = Object.keys(this.templateOptions).map(key => key + '=' + encodeURIComponent(this.templateOptions[key])).join('&')
-      let opts = await fetch(`http://localhost:3100/opts/${this.template}`)
+      let opts = await fetch(`https://api.badge.dog/opts/${this.template}`)
       this.templateOptions = await opts.json()
-      let result = await fetch(`http://localhost:3100/woof/${this.template}.svg?${queryString}`)
+      let result = await fetch(`https://api.badge.dog/woof/${this.template}.svg?${queryString}`)
       result = await result.text()
       this.isLoading = false
       this.result = result
